@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Login } from './store/login/action'
 import './App.css';
+import RouterWrapper from './router/Routes'
 
-function App() {
+const App=() =>{
+  
+  const dispatch = useDispatch();
+  const data = useSelector((state)=> state.login);
+   console.log("hii",data)
+
+  React.useEffect(()=>{
+    dispatch(Login());
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <RouterWrapper />
     </div>
   );
 }
