@@ -1,6 +1,6 @@
 import {
     LOGIN_REQUEST,LOGIN_SUCCESS,LOGIN_FAIL
-} from './types';
+} from './action';
 
 const initialState = {
     isLoading:null,
