@@ -1,20 +1,11 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { LoginForm } from "../../components/LoginForm/loginForm.component";
+import { useAuth } from "../../customHooks/auth/auth";
 
 export const Login = () => {
-    const userData = useSelector(state=>state.login)
+    const userData = useAuth()
     console.log(userData)
-    const navigate = useNavigate()
-    
-    useEffect(()=>{
-        console.log('asdasdssadasfdeggrsga', userData)
-        if(userData && userData.login.token){
-            console.log('asdasdsa')
-            navigate('/stages')
-        }
-    }, [userData])
-
-    return <LoginForm />
+    return userData ? <Navigate to='/dashboard'/> : <LoginForm />
 }
