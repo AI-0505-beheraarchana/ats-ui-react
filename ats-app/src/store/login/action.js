@@ -14,3 +14,7 @@ export const Login = () => async dispatch => {
     })
     dispatch(LoginAction.loginRequest)
 }
+
+export const LoginForm = (email) => async dispatch => {
+  console.log(email);
+}
