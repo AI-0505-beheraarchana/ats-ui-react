@@ -34,3 +34,11 @@ export const ForgotPasswordService = ( data ) => async dispatch =>{
         dispatch(LoginAction.forgotPassError())
     })
 }
+
+export const Logout = ( ) => async dispatch => {
+ 
+    dispatch(LoginAction.logoutSuccess());
+     < Navigate to='/'/>
+ 
+     
+ }
