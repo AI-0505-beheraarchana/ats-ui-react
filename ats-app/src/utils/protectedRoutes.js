@@ -4,5 +4,5 @@ import { useAuth } from "../customHooks/auth/auth"
 export const ProtectedRoutes = ()=>{
     const auth = useAuth()
 
-    return auth ? <Outlet /> : <Navigate to='/login' />
+    return auth ? <Outlet /> : <Navigate to='/' />
 }

@@ -1,47 +1,38 @@
 import {
-    LOGIN_REQUEST,LOGIN_SUCCESS,LOGIN_FAIL,
-    LOGOUT_SUCCESS
+    GET_OPENING_REQUEST,GET_OPENING_SUCCESS,GET_OPENING_FAIL,
+
 } from './action';
 
 const initialState = {
     isLoading:null,
-    login: [],
+    candidates: [],
     error:{}
 };
 
-const loinReducer = (state=initialState, action) => {
+const openingReducer = (state=initialState, action) => {
 
     switch(action.type){
-        case LOGIN_REQUEST:
+        case GET_OPENING_REQUEST:
             return{
                ...state,
                isLoading:true,
                error:{}
             }
-            case LOGIN_SUCCESS:
+            case GET_OPENING_SUCCESS:
                 return{
                    ...state,
                    isLoading:false,
-                   login:action.payload,
+                   candidates:action.payload,
                    error:{}
                 }
         
-        case LOGIN_FAIL:
+        case GET_OPENING_FAIL:
                 return{
                    ...state,
                    isLoading:false,
-                   login:[],
+                   candidates:[],
                    error:action.payload ||{}
                 }
-        //logout success
-
-                case LOGOUT_SUCCESS:
-                    localStorage.removeItem( 'ATS_user_data' );
-            return{
-               ...state,
-               isLoading:false,
-            login:[],
-            }
     
 
     default:
@@ -50,4 +41,4 @@ const loinReducer = (state=initialState, action) => {
 };
     
 }
-export default loinReducer;
+export default openingReducer;

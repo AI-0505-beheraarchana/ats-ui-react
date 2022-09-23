@@ -1,38 +1,28 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { Routes, Route, useNavigate } from "react-router-dom";
-import { Login } from '../pages/login/login.components'
-import { Stages } from "../pages/stages/stages.component";
-import * as LoginAction from '../store/login/action'
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { Login } from '../pages/login/login.components';
+// import DashboardLayout from '../layout/dashboardLayout';
+// import { Stages } from './pages/stages/stages.component';
+import { ProtectedRoutes } from '../utils/protectedRoutes';
+import { Stages }from '../pages/stages/stages.component'
+import Candidates from '../pages/candidates'
 
 
-const RouterWrapper = () => {
 
-  const navigate = useNavigate()
-  const [ hasToken, setHasToken ] = useState(false)
-  const dispatch = useDispatch()
-
-  useEffect(()=>{
-    const userData = JSON.parse(localStorage.getItem('ATS_user_data'));
-    console.log(userData)
-    if(userData && userData.token){
-      setHasToken(true)
-    }
-    else{
-      dispatch(LoginAction.loginSuccess({}))
-      navigate('/')
-    }
-  },[])
-
-  return (
-    <React.Fragment>
-
+const RouterWrapper = () =>{
+    return(
+        <React.Fragment>
       <Routes>
-        {/* { hasToken ? ( <Route path="/" element={<Stages />} /> ) : ( <Route path="/" element={<Login />} />) } */}
-        <Route path="/" element={<Login />} />
-        <Route path="/stages" element={<Stages />} />
+        <Route path='/' element={ <Login /> } />
+         <Route path='/dashboard' element={<ProtectedRoutes />} >
+         {/* <Route index element={<DashboardLayout/>}> */}
+           <Route path='/dashboard/stages' element={<Stages/>}/>
+           <Route path='/dashboard/candidates' element={<Candidates/>}/>
+          {/* <Route index element={<Stages />} /> */}
+          {/* </Route> */}
+        </Route>
       </Routes>
     </React.Fragment>
-  )
+    )
 }
-export default RouterWrapper;
+export default RouterWrapper ;

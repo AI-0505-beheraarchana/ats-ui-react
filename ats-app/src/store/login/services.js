@@ -1,5 +1,6 @@
 import * as LoginAction from './action'
 import axios from 'axios';
+import { Navigate } from "react-router-dom"
 
 export const LoginService = ( data ) => async dispatch => {
     axios.post(process.env.REACT_APP_BASE_URL + '/login', {
@@ -7,7 +8,6 @@ export const LoginService = ( data ) => async dispatch => {
         password: data.password
     })
     .then(res =>{
-        console.log('1111111111', res.data)
         if(res){
             localStorage.setItem( 'ATS_user_data', JSON.stringify(res.data) )
             dispatch(LoginAction.loginSuccess(res.data))
@@ -18,4 +18,12 @@ export const LoginService = ( data ) => async dispatch => {
         dispatch(LoginAction.loginFail(err))
     })
     dispatch(LoginAction.loginRequest)
+}
+
+export const Logout = ( ) => async dispatch => {
+ 
+   dispatch(LoginAction.logoutSuccess());
+    < Navigate to='/'/>
+
+    
 }

@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import React from "react";
+import { Navigate } from "react-router-dom";
 import { LoginForm } from "../../components/LoginForm/loginForm.component";
 import { useAuth } from "../../customHooks/auth/auth";
 
