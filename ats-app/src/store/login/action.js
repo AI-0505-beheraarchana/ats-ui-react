@@ -27,3 +27,7 @@ export const forgotPassSuccess = () => ({
 export const forgotPassError = () => ({
     type:FORGOTPASS_ERROR
 })
+
+export const logoutSuccess = () => ({
+    type:LOGOUT_SUCCESS,
+})
