@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { Stages } from "../../pages/stages/stages.component";
 import { LoginService } from "../../store/login/services";
 
 export const LoginForm = () => {
@@ -79,7 +78,7 @@ export const LoginForm = () => {
                     <div id="emailHelp" className="form-text text-danger"> {loginError.password} </div>
                 </div>
                 <div className="mb-3 form-check">
-                    <Link to={ Stages }> <span> Forgot Password? </span> </Link>
+                    <Link to='/forgot-password'> <span> Forgot Password? </span> </Link>
                 </div>
                 <button type="submit" className="btn btn-primary">Login</button>
             </form>

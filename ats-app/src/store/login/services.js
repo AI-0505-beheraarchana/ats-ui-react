@@ -20,10 +20,17 @@ export const LoginService = ( data ) => async dispatch => {
     dispatch(LoginAction.loginRequest)
 }
 
-export const Logout = ( ) => async dispatch => {
- 
-   dispatch(LoginAction.logoutSuccess());
-    < Navigate to='/'/>
-
-    
+export const ForgotPasswordService = ( data ) => async dispatch =>{
+    console.log('here',data)
+    axios.post(process.env.REACT_APP_BASE_URL + '/forgotpassword', {
+        handle: data
+    }).then(res => {
+        console.log('28')
+        if(res){
+            console.log(res)
+            dispatch(LoginAction.forgotPassSuccess() )
+        }
+    }).catch(err => {
+        dispatch(LoginAction.forgotPassError())
+    })
 }
